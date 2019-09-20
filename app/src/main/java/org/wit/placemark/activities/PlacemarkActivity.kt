@@ -22,9 +22,9 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
 
         btnAdd.setOnClickListener() {
             placemark.title = placemarkTitle.text.toString()
+            placemark.desc = placemarkDesc.text.toString()
             if (placemark.title.isNotEmpty()) {
                 placemarks.add(placemark)
-                info("add Button Pressed: $placemark")
                 info("Placemarks: $placemarks")
 
             }
