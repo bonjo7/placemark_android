@@ -1,6 +1,6 @@
 package org.wit.placemark
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
