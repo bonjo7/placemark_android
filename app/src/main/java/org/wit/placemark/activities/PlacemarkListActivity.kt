@@ -1,15 +1,13 @@
 package org.wit.placemark.activities
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_placemark_list.*
 import kotlinx.android.synthetic.main.card_placemark.view.*
+import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.R
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.PlacemarkModel
@@ -35,6 +33,13 @@ class PlacemarkListActivity : AppCompatActivity() {
     menuInflater.inflate(R.menu.menu_main, menu)
     return super.onCreateOptionsMenu(menu)
   }
+
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item?.itemId) {
+      R.id.item_add -> startActivityForResult<PlacemarkActivity>(0)
+    }
+    return super.onOptionsItemSelected(item)
+  }
 }
 
 class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>) :
@@ -42,7 +47,7 @@ class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>)
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
     return MainHolder(
-      LayoutInflater.from(parent.context).inflate(
+      LayoutInflater.from(parent?.context).inflate(
         R.layout.card_placemark,
         parent,
         false
@@ -61,7 +66,7 @@ class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>)
 
     fun bind(placemark: PlacemarkModel) {
       itemView.placemarkTitle.text = placemark.title
-      itemView.description.text = placemark.desc
+      itemView.desc.text = placemark.desc
     }
   }
 }
